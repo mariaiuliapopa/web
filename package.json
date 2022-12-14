@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "vue": "^3.2.38",
+    "vue-water-mark-tools": "^2.2.1",
     "vuetify": "^3.0.2"
   },
   "devDependencies": {

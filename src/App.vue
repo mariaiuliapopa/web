@@ -1,9 +1,10 @@
 <script setup>
 import proiect from "./components/proiect.vue"
 import about from "./components/despreproiect.vue"
-
+import paginapornire from "./components/paginadepornire.vue"
 import { useTheme } from "vuetify";
 </script>
+
 <script>
 const routes = {
 
@@ -38,15 +39,18 @@ export default {
 
   <main>
     <v-app>
-      <v-app-bar title="Vreme">
-        <v-btn href="#/proiect">Vremea</v-btn>
-        <v-btn href="#/about">About</v-btn>
+      <v-app-bar title="Weather" id="titlu">
+        <v-btn href="#/paginadepornire">The weather in the current location</v-btn> 
+        <v-btn href="#/proiect">Search the weather in various cities</v-btn>
+        <v-btn href="#/about">About the web page</v-btn>
       </v-app-bar>
       <v-main>
+
         <component :is="currentView" />
+        <paginapornire v-if="(this.currentPath!=='#/proiect')&&(this.currentPath!=='#/about')"/>
       </v-main>
 <v-footer>
-  <v-btn href="#/Admin">Admin</v-btn>
+ 
 </v-footer>
 
     </v-app>
@@ -54,5 +58,10 @@ export default {
 </template>
 
 <style scoped>
-
+#titlu
+{
+  color:blue;
+  
+  
+}
 </style>
