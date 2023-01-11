@@ -23,6 +23,7 @@ export default {
         body: JSON.stringify(datadesprevreme)
       }).then(response => response.json())
         .then(result => {console.log(result);
+        
         this.oras=result.location;
         this.tara=result.country;
         this.temperaturac=result.temp_c;
@@ -35,54 +36,29 @@ export default {
 };
 </script>
 
+
 <template>
+  
   <v-app>
-  <br/>
   <h2 id="insereaza" >Insert the city</h2>
+  <br/>
   <v-main>
-  <v-text-field bg-color="white" color="white" label="Input" placeholder="vreme" variant="solo" id="vreme">    </v-text-field>
-  <v-btn @click="vremeaapi"> search </v-btn>
+  <v-text-field  bg-color="white" color="white" label="City" placeholder="City" variant="solo" id="vreme">    </v-text-field>
+  <v-btn id="search" @click="vremeaapi"> search </v-btn>
   <p></p>
   <br/>
   <br/>
-  <br/>
-  <p  id="dimensiune" > Town: </p>
+  <p id="dimensiune" > Town: </p>
   <p id="dimensiune2" > {{this.oras}} </p>
-  <p></p>
-  <br/>
-  <P  id="dimensiune" > Country: </p>
+  <P id="dimensiune" > Country: </p>
   <p id="dimensiune2" > {{this.tara}} </p>
-  <br/>
-  <p  id="dimensiune" > Temperature: </p>
+  <p id="dimensiune" > Temperature: </p>
   <p id="dimensiune2" > {{this.temperaturac}} </p>
-  <br/>
-  <p  id="dimensiune" > Humidity: </p>
+  <p id="dimensiune" > Humidity: </p>
   <p id="dimensiune2" > {{this.umiditate}} </p>
-  <br/>
   <p id="dimensiune" > Weather conditions: </p>
   <p id="dimensiune2" > {{this.conditi}} </p>
-  <br/>
 </v-main>
 </v-app>
 </template>
 
-<style scoped>
-#insereaza
-{
- font-size: xx-large;
-}
-#dimensiune
-{ 
-  font-size:x-large;
-  margin-right: -160px;
-}
-
-#dimensiune2
-{
-   color:blue;
-   font-size:xx-large;
-   margin-right: -160px;
-}
-
-
-</style>

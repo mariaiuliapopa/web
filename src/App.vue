@@ -39,10 +39,10 @@ export default {
 
   <main>
     <v-app>
-      <v-app-bar title="Weather" id="titlu">
-        <v-btn href="#/paginadepornire">The weather in the current location</v-btn> 
-        <v-btn href="#/proiect">Search the weather in various cities</v-btn>
-        <v-btn href="#/about">About the web page</v-btn>
+      <v-app-bar title="WEATHER" id="titlu_bara_start">
+        <v-btn href="#/paginadepornire" id="bara_start">The weather in the current location</v-btn> 
+        <v-btn href="#/proiect" id="bara_start">Search the weather in various cities</v-btn>
+        <v-btn href="#/about" id="bara_start">About the page</v-btn>
       </v-app-bar>
       <v-main>
 

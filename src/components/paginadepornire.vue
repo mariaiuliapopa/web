@@ -7,17 +7,14 @@ export default {
       saveCurectLocationFromApi:null
     };
   },
-
-
   methods: {
     async vremeaapi(){
       await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${this.saveCurentLocation.latitude}&lon=${this.saveCurentLocation.longitude}&appid=4b5b12586aaaf341337e527c046c7a2c`)
     .then(resp=>resp.json())
     .then(data=>{console.log(data)
-      this.saveCurectLocationFromApi=data;
+     this.saveCurectLocationFromApi=data;
     });
 console.log(this.saveCurectLocationFromApi[0].name);
-
       var datadesprevreme={
             "location": `${this.saveCurectLocationFromApi[0].name}`
       };
@@ -27,11 +24,10 @@ console.log(this.saveCurectLocationFromApi[0].name);
           'Authorization': 'Bearer ZDc3ZDRkODgtOGZiNS00NTQyLTg3ZWMtZjdhZWI2YmQ3MTU0',
           'content-type': 'application/json'
         },
-      
-      
         body: JSON.stringify(datadesprevreme)
       }).then(response => response.json())
         .then(result => {console.log(result);
+        this.icon=result.icon_url;
         this.oras=result.location;
         this.tara=result.country;
         this.temperaturac=result.temp_c;
@@ -40,7 +36,6 @@ console.log(this.saveCurectLocationFromApi[0].name);
       });
      }
     },
-
     mounted: function() {
     if(navigator.geolocation){
        navigator.geolocation.getCurrentPosition(position => {
@@ -49,17 +44,16 @@ console.log(this.saveCurectLocationFromApi[0].name);
         console.log(this.saveCurentLocation);
       })
     }
-  },
-  
+  }, 
 };
 </script>
 
 <template>
-  <br/>
-  <br/>
-  <img src="./Meteo-1.jpg" alt="ceva"> 
- <v-app>
+  <div>
+  <v-app>
   <v-main>
+  <img :src="this.icon" alt="icon" id="imagine">
+  <p></p>
   <div :is="vremeaapi()" v-if="this.saveCurentLocation"></div>
   <p  id="dimensiune" > Town: </p>
   <p id="dimensiune2" > {{this.oras}} </p>
@@ -79,30 +73,9 @@ console.log(this.saveCurectLocationFromApi[0].name);
   <br/>
   </v-main>
  </v-app>
-
+</div>
 </template>
 
 
 
 
-<style scoped>
-img {
-  float: center;
-  margin-right: -160px;
-  
-}
-#dimensiune
-{ 
-  font-size:x-large;
-  margin-right: -160px;
-}
-
-#dimensiune2
-{
-   color:blue;
-   font-size:xx-large;
-   margin-right: -160px;
-}
-
-
-</style>
